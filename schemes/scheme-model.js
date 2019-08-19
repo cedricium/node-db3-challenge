@@ -19,8 +19,15 @@ const findSteps = async id => {
   return steps
 }
 
+const add = async scheme => {
+  const [id] = await db('schemes').insert(scheme)
+  const [newScheme] = await db('schemes').where({ id })
+  return newScheme
+}
+
 module.exports = {
   find,
   findById,
   findSteps,
+  add,
 }
