@@ -31,10 +31,17 @@ const update = async (changes, id) => {
   return scheme
 }
 
+const remove = async id => {
+  const [scheme] = await db('schemes').where({ id })
+  await db('schemes').where({ id }).del()
+  return scheme
+}
+
 module.exports = {
   find,
   findById,
   findSteps,
   add,
   update,
+  remove,
 }
