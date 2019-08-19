@@ -5,6 +5,12 @@ const find = async () => {
   return schemes
 }
 
+const findById = async id => {
+  const [scheme] = await db('schemes').where({ id })
+  return scheme
+}
+
 module.exports = {
   find,
+  findById,
 }
